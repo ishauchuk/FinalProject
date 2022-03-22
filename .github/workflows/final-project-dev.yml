@@ -27,15 +27,11 @@ jobs:
         pip install -r requirements.txt
     - name: Create env file
       run: |
-          echo "SECRET_KEY=${{secrets.SECRET_KEY}}\nDEBUG=${{secrets.DEBUG}}" > .env
+          echo SECRET_KEY=${{secrets.SECRET_KEY}}\nDEBUG=${{secrets.DEBUG}} > .env
     - name: Run Linters
       run: |
         flake8
     - name: Run Tests
-      env:
-          ## Environment variable
-          SECRET_KEY: $secrets.SECRET_KEY
-          DEBUG: $secrets.DEBUG
       run: |
         python manage.py test
     - name: Final
