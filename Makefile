@@ -11,4 +11,4 @@ set-admin:
 test:
 	poetry run python manage.py test
 lint:
-	poetry run python manage.py test
+	poetry run flake8
