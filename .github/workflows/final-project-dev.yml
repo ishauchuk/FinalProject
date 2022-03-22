@@ -37,6 +37,7 @@ jobs:
       env:
           ## Environment variable
           SECRET_KEY: $secrets.SECRET_KEY
+          DEBUG: $secrets.DEBUG
       run: |
         python manage.py test
     - name: Final
