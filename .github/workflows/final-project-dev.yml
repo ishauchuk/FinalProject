@@ -27,10 +27,7 @@ jobs:
         pip install -r requirements.txt
     - name: Create env file
       run: |
-          touch .env
-          echo SECRET_KEY=${{secrets.SECRET_KEY}} >> .env
-          echo DEBUG=${{secrets.DEBUG}} >> .env
-          cat .env
+          echo "SECRET_KEY=${{secrets.SECRET_KEY}}\nDEBUG=${{secrets.DEBUG}}" > .env
     - name: Run Linters
       run: |
         flake8
