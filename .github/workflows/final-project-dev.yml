@@ -28,12 +28,15 @@ jobs:
     - name: Create env file
       run: |
           touch .env
-          echo SECRET_KEY=$secrets.SECRET_KEY >> .env
+          echo SECRET_KEY=${{secrets.SECRET_KEY}} >> .env
           cat .env
     - name: Run Linters
       run: |
         flake8
     - name: Run Tests
+      env:
+          ## Environment variable
+          SECRET_KEY: $secrets.SECRET_KEY
       run: |
         python manage.py test
     - name: Final
